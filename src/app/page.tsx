@@ -27,6 +27,14 @@ const Page = () =>{
 
   //remove item on main page
 
+  const deleteItem = (index:number) => {
+
+    alert('deletando item '+ index);
+    
+    const newList = list.filter((item, key) => key !== index);
+    setList(newList);
+  }
+
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center text-2xl bg-gradient-to-tl from-purple-600 via-blue-400 to-blue-600">
@@ -49,7 +57,8 @@ const Page = () =>{
           {list.map((item, index) => (
               <li className="flex">
               <p key={index}>{item.label}</p>
-              <button className="hover:underline">Delete</button>
+              <button className="hover:underline"
+              onClick={() => deleteItem(index)}>Delete</button>
             </li>
           ))}
           
