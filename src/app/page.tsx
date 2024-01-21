@@ -18,7 +18,8 @@ const Page = () =>{
     setList([
       ...list, 
       {label: itemImput, checked: false}
-    ])
+    ]);
+    setItemImput('');
   }
 
 
@@ -26,7 +27,7 @@ const Page = () =>{
     <div className="w-screen h-screen flex flex-col items-center justify-center text-2xl bg-gradient-to-tl from-purple-600 via-blue-400 to-blue-600">
       <h1 className="text-4xl mt-5">Todo List</h1>
 
-      <div className="flex max-w-lg my-3 p-4 rounded-md bg-white border-2 border-gray-200">
+      <div className="flex w-full max-w-lg my-3 p-4 rounded-md bg-white border-2 border-gray-200">
         <input 
           type="text" 
           placeholder="What do want to do?"
@@ -38,6 +39,7 @@ const Page = () =>{
           onClick={handleAddBtn}>Add</button>
       </div>
       <div>
+        <h2 className="my-4">{list.length} items</h2>
         <ul className="w-full max-w-lg list-disc pl-5">
           {list.map(item => (
               <li className="flex">
