@@ -5,9 +5,12 @@ import { useState } from "react";
 
 const Page = () =>{
 
-  const [ list, setList] = useState<TodoItem[]>([]);
+  const [ list, setList] = useState<TodoItem[]>([
+    {label: 'Fazer alguma coisa 1', checked: false },
+    {label: 'Fazer alguma coisa 2', checked: false }
+  ]);
 
-  
+
 
 
 
@@ -24,14 +27,13 @@ const Page = () =>{
       </div>
       <div>
         <ul className="w-full max-w-lg list-disc pl-5">
-          <li className="flex">
-            <p>Task 01</p>
-            <button className="hover:underline">Delete</button>
-          </li>
-          <li className="flex">
-            <p>Task 02</p>
-            <button className="hover:underline">Delete</button>
-          </li>  
+          {list.map(item => (
+              <li className="flex">
+              <p>{item.label}</p>
+              <button className="hover:underline">Delete</button>
+            </li>
+          ))}
+          
         </ul>
       </div>
     </div>
