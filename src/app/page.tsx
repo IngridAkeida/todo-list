@@ -41,12 +41,14 @@ const Page = () =>{
     alert('checking '+ index);
 
     let newList = [...list];
-
+    newList[index].checked = !newList[index].checked;
+    /*
+    other way to do this 
     for(let i in newList) {
       if(index === parseInt(i)){
         newList[i].checked = !newList[i].checked;
       }
-    }
+    }*/
     setList(newList);
   }
 
