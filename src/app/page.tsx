@@ -7,8 +7,7 @@ const Page = () =>{
 
   // see item on main page
   const [ list, setList] = useState<TodoItem[]>([
-    {id: 0, label: 'Fazer alguma coisa 1', checked: false },
-    {id: 1, label: 'Fazer alguma coisa 2', checked: false }
+    //{id: 0, label: 'Fazer alguma coisa 1', checked: false },
   ]);
 
   // add item on main page 
