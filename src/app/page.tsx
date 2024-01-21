@@ -15,12 +15,17 @@ const Page = () =>{
   const [ itemImput, setItemImput] = useState('');
 
   const handleAddBtn = () => {
+    if(itemImput.trim() === '') return;
+    //trim() -> Eliminates whitespace at the beginning and end
+
     setList([
       ...list, 
       {label: itemImput, checked: false}
     ]);
     setItemImput('');
   }
+
+  //remove item on main page
 
 
   return (
@@ -41,9 +46,9 @@ const Page = () =>{
       <div>
         <h2 className="my-4">{list.length} items</h2>
         <ul className="w-full max-w-lg list-disc pl-5">
-          {list.map(item => (
+          {list.map((item, index) => (
               <li className="flex">
-              <p>{item.label}</p>
+              <p key={index}>{item.label}</p>
               <button className="hover:underline">Delete</button>
             </li>
           ))}
