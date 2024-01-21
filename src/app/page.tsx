@@ -1,12 +1,15 @@
 "use client"
 
+import { TodoItem } from "@/types/TodoItem";
 import { useState } from "react";
 
 const Page = () =>{
 
-  const [ list, setList] = useState([]);
+  const [ list, setList] = useState<TodoItem[]>([]);
 
   
+
+
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center text-2xl bg-gradient-to-tl from-purple-600 via-blue-400 to-blue-600">
