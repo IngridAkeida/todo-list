@@ -28,8 +28,7 @@ const Page = () =>{
   //remove item on main page
 
   const deleteItem = (index:number) => {
-
-    alert('deleting item '+ index);
+    //alert('deleting item '+ index);
 
     const newListDeleted = list.filter((item, key) => key !== index);
     setList(newListDeleted);
@@ -38,7 +37,7 @@ const Page = () =>{
    //change item on main page
 
   const toggleItem = (index:number) => {
-    alert('checking '+ index);
+    //alert('checking '+ index);
 
     let newList = [...list];
     newList[index].checked = !newList[index].checked;
