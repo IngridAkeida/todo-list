@@ -29,9 +29,24 @@ const Page = () =>{
 
   const deleteItem = (index:number) => {
 
-    alert('deletando item '+ index);
-    
-    const newList = list.filter((item, key) => key !== index);
+    alert('deleting item '+ index);
+
+    const newListDeleted = list.filter((item, key) => key !== index);
+    setList(newListDeleted);
+  }
+
+   //change item on main page
+
+  const toggleItem = (index:number) => {
+    alert('checking '+ index);
+
+    let newList = [...list];
+
+    for(let i in newList) {
+      if(index === parseInt(i)){
+        newList[i].checked = !newList[i].checked;
+      }
+    }
     setList(newList);
   }
 
@@ -51,14 +66,23 @@ const Page = () =>{
           className="bg-black"
           onClick={handleAddBtn}>Add</button>
       </div>
+
       <div>
         <h2 className="my-4">{list.length} items</h2>
         <ul className="w-full max-w-lg list-disc pl-5">
           {list.map((item, index) => (
-              <li className="flex">
+            <li className="flex">
+              <input 
+                className="w-6 h-6 mr-3 mt-1"
+                type="checkbox" 
+                checked={item.checked} 
+                onClick={() => toggleItem(index)}/>
               <p key={index}>{item.label}</p>
-              <button className="hover:underline"
-              onClick={() => deleteItem(index)}>Delete</button>
+              <button 
+                className="hover:underline"
+                onClick={() => deleteItem(index)}>
+                  Delete
+              </button>
             </li>
           ))}
           
