@@ -7,8 +7,8 @@ const Page = () =>{
 
   // see item on main page
   const [ list, setList] = useState<TodoItem[]>([
-    {label: 'Fazer alguma coisa 1', checked: false },
-    {label: 'Fazer alguma coisa 2', checked: false }
+    {id: 0, label: 'Fazer alguma coisa 1', checked: false },
+    {id: 1, label: 'Fazer alguma coisa 2', checked: false }
   ]);
 
   // add item on main page 
@@ -20,31 +20,33 @@ const Page = () =>{
 
     setList([
       ...list, 
-      {label: itemImput, checked: false}
+      { id: list.length, label: itemImput, checked: false}
     ]);
     setItemImput('');
   }
 
   //remove item on main page
 
-  const deleteItem = (index:number) => {
-    //alert('deleting item '+ index);
+  const deleteItem = (id:number) => {
 
-    const newListDeleted = list.filter((item, key) => key !== index);
+    /* without id 
+    const newListDeleted = list.filter((item, key) => key !== index);*/
+    const newListDeleted = list.filter(item => item.id !== id);
     setList(newListDeleted);
   }
 
    //change item on main page
 
-  const toggleItem = (index:number) => {
-    //alert('checking '+ index);
+  const toggleItem = (id:number) => {
 
     let newList = [...list];
-    newList[index].checked = !newList[index].checked;
+    /*without id 
+    newList[index].checked = !newList[index].checked;*/
+    newList[id].checked = !newList[id].checked;
     /*
     other way to do this 
     for(let i in newList) {
-      if(index === parseInt(i)){
+      if(newList[i].id === id){
         newList[i].checked = !newList[i].checked;
       }
     }*/
@@ -71,17 +73,21 @@ const Page = () =>{
       <div>
         <h2 className="my-4">{list.length} items</h2>
         <ul className="w-full max-w-lg list-disc pl-5">
-          {list.map((item, index) => (
+          {/*without id {list.map((item, index) => (*/}
+          {list.map(item => (
             <li className="flex">
+              {/*toggleItem(index)*/}
               <input 
                 className="w-6 h-6 mr-3 mt-1"
                 type="checkbox" 
                 checked={item.checked} 
-                onClick={() => toggleItem(index)}/>
-              <p key={index}>{item.label}</p>
+                onClick={() => toggleItem(item.id)}/>
+              {/*<p key={index}>{item.label}</p>*/}
+              <p key={item.id}>{item.label}</p>
+              {/*deleteItem(index)*/}
               <button 
                 className="hover:underline"
-                onClick={() => deleteItem(index)}>
+                onClick={() => deleteItem(item.id)}>
                   Delete
               </button>
             </li>
