@@ -5,13 +5,21 @@ import { useState } from "react";
 
 const Page = () =>{
 
+  // see item on main page
   const [ list, setList] = useState<TodoItem[]>([
     {label: 'Fazer alguma coisa 1', checked: false },
     {label: 'Fazer alguma coisa 2', checked: false }
   ]);
 
+  // add item on main page 
+  const [ itemImput, setItemImput] = useState('');
 
-
+  const handleAddBtn = () => {
+    setList([
+      ...list, 
+      {label: itemImput, checked: false}
+    ])
+  }
 
 
   return (
@@ -22,8 +30,12 @@ const Page = () =>{
         <input 
           type="text" 
           placeholder="What do want to do?"
-          className="flex-1 border border-black p-3 text-2xl text-black rounded-md mr-3"/>
-        <button className="bg-black">Add</button>
+          className="flex-1 border border-black p-3 text-2xl text-black rounded-md mr-3"
+          value={itemImput}
+          onChange={e=> setItemImput(e.target.value)}/>
+        <button 
+          className="bg-black"
+          onClick={handleAddBtn}>Add</button>
       </div>
       <div>
         <ul className="w-full max-w-lg list-disc pl-5">
