@@ -24,6 +24,17 @@ const Page = () =>{
     setItemImput('');
   }
 
+  //edit item on main page 
+
+  const editItemText = (id: number, newText:string) =>{
+    list.map( t => {
+      if(t.id === id){
+        t.label = newText;
+      }
+      return t;
+    })
+  }
+
   //remove item on main page
 
   const deleteItem = (id:number) => {
